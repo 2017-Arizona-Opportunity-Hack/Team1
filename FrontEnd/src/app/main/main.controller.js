@@ -6,71 +6,130 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, $log) {
+  function MainController($scope, $http, $log) {
     var vm = this;
+    var midPage;
     var hidemF;
     var derpF;
     var schol;
     var carS;
     var dentalS;
+    var renalS;
+    var finS;
     var fams = 1;
+    var homeS;
+    var assS;
+
+      $scope.homeS = false
+      $scope.derpF = false
+      $scope.hidemF = false
+      $scope.carS = false
+      $scope.dentalS = false
+      $scope.schol = false
+      $scope.finS = false
+      $scope.assS = false
+      $scope.data;
+      $scope.doctor =0
+      $scope.rentmortgage = 0
+      $scope.phonebill = 0
+      $scope.gasbill = 0
+      $scope.electricbill = 0
+      $scope.waterbill = 0
+      $scope.payment = 0
+      $scope.gasoil = 0
+      $scope.insurance = 0
+      $scope.repairs = 0
+      $scope.doctor= 0
+      $scope.medicines = 0
+      $scope.hospital=  0
+      $scope.linsurance = 0
+      $scope.minsurance= 0
+      $scope.total = 0
+      $scope.nums = 0
+      $scope.contentNums = 0
+      $scope.getHouseMonthlyCosts =0
+      $scope.totalIncome = 0
+      $scope.netemployment = 0
+      $scope.ssd = 0
+      $scope.ssi = 0
+      $scope.adc = 0
+      $scope.foodstamps = 0
+      $scope.other = 0
 
 
-    $scope.derpF = false
-    $scope.hidemF = false
-    $scope.carS = false
-    $scope.dentalS = false
-    $scope.schol = false
-    $scope.doctor =0
-    $scope.rentmortgage = 0
-    $scope.phonebill = 0
-    $scope.gasbill = 0
-    $scope.electricbill = 0
-    $scope.waterbill = 0
-    $scope.payment = 0
-    $scope.gasoil = 0
-    $scope.insurance = 0
-    $scope.repairs = 0
-    $scope.doctor= 0
-    $scope.medicines = 0
-    $scope.hospital=  0
-    $scope.linsurance = 0
-    $scope.minsurance= 0
-    $scope.total = 0
-    $scope.nums = 0
-    $scope.contentNums = 0
-    $scope.getHouseMonthlyCosts =0
-    $scope.totalIncome = 0
-    $scope.netemployment = 0
-    $scope.ssd = 0
-    $scope.ssi = 0
-    $scope.adc = 0
-    $scope.foodstamps = 0
-    $scope.other = 0
-    $scope.show = function(){
-       $scope.hidemF = hidemF == true ? hidemF = false : hidemF = true
+    $scope.midShow = function(){
+        $scope.hidemF = hidemF == true ? hidemF = false : hidemF = true
+        $scope.midPage = midPage == true ? midPage = false : midPage = true
     }
-
     $scope.derp = function(){
-      $scope.hidemF = hidemF == true ? hidemF = false : hidemF = true
+      $scope.midPage = midPage == true ? midPage = false : midPage = true
       $scope.derpF = derpF == true ? derpF = false : derpF = true
     }
     $scope.scholShow = function(){
-      $scope.hidemF = hidemF == true ? hidemF = false : hidemF = true
+      $scope.midPage = midPage == true ? midPage = false : midPage = true
       $scope.schol = schol == true ? schol = false : schol = true
     }
     $scope.carShow = function(){
-      $scope.hidemF = hidemF == true ? hidemF = false : hidemF = true
+      $scope.midPage = midPage == true ? midPage = false : midPage = true
       $scope.carS = carS == true ? carS = false : carS = true
     }
     $scope.dentalShow = function(){
-        $scope.hidemF = hidemF == true ? hidemF = false : hidemF = true
+      $scope.midPage = midPage == true ? midPage = false : midPage = true
       $scope.dentalS = dentalS == true ? dentalS = false : dentalS = true
     }
-    // create new HTML elements with angular
+
+    $scope.renalShow = function(){
+      $scope.midPage = midPage == true ? midPage = false : midPage = true
+      $scope.renalS = renalS == true ? renalS = false : renalS = true
+    }
+
+      $scope.finShow = function(){
+        $scope.midPage = midPage == true ? midPage = false : midPage = true
+        $scope.finS = finS == true ? finS = false : finS = true
+      }
+
+      $scope.homeShow = function(){
+        $scope.midPage = midPage == true ? midPage = false : midPage = true
+        $scope.homeS = homeS == true ? homeS = false : homeS = true
+      }
+      $scope.assShow = function(){
+        $scope.midPage = midPage == true ? midPage = false : midPage = true
+        $scope.assS = assS == true ? assS = false : assS = true
+      }
+    $scope.test = function(){
+      var acc = document.getElementsByClassName("accordion");
+      for (var i = 0; i < acc.length; i++) {
+        acc[i].onclick = function() {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight){
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+        }
+      }
+    }
+
+
+    $scope.send = function(){
+      $http.post('http://localhost:1337/data', $scope.data).then(function(res){
+        if (res.status == 200) {
+          $scope.derpF = false
+          $scope.midPage = true
+          $scope.carS = false
+          $scope.dentalS = false
+          $scope.schol = false
+          $scope.renalS = false
+          $scope.finS = false
+          $scope.homeS = false
+        }
+        else{
+          $scope.fail = true
+        }
+      })
+    }
     $scope.getHouseMonthlyCosts = function(){
-        // $log.log('ass')
-        // $scope.total = 0;
 
         $scope.total = parseInt($scope.doctor)  +  parseInt($scope.rentmortgage )+ parseInt($scope.phonebill) + parseInt($scope.gasbill) + parseInt($scope.electricbill) + parseInt($scope.waterbill)
          + parseInt($scope.payment) + parseInt($scope.gasoil) + parseInt($scope.insurance)+ parseInt($scope.repairs) + parseInt($scope.doctor) +   parseInt($scope.medicines )
@@ -79,20 +138,7 @@
              $scope.total = "Please input all values.";
          }
 
-
-
-        //  $scope.totalarr = parseInt($scope.doctor),  parseInt($scope.rentmortgage ), parseInt($scope.phonebill), parseInt($scope.gasbill), parseInt($scope.electricbill), parseInt($scope.waterbill),
-        //  parseInt($scope.payment), parseInt($scope.gasoil), parseInt($scope.insurance), parseInt($scope.repairs), parseInt($scope.doctor),   parseInt($scope.medicines ),
-        //  parseInt($scope.hospital), parseInt($scope.linsurance), parseInt($scope.minsurance);
-        //  for(var i = 0; i < $scope.total.length; i++) {
-        //      $log.log("FUCK")
-        //      if($scope.totalarr[i] == undefined || $scope.totalarr[i] == null) {
-        //          $scope.totalarr[i] = 0;
-        //      }
-        //  }
-
     }
-
     $scope.getMonthlyIncome = function(){
         $scope.totalIncome = parseInt($scope.netemployment) + parseInt($scope.ssd) + parseInt($scope.ssi) + parseInt($scope.adc) + parseInt($scope.foodstamps) + parseInt($scope.other);
     }
@@ -211,5 +257,7 @@
         $scope.sabalancePlaceholder="Cuenta de ahorros";
         $scope.homevaluePlaceholder="Casa(valor)";
       }
-  }
+
+
+}
 })();
