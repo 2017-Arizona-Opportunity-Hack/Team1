@@ -19,23 +19,23 @@ module.exports = {
 } catch (err) {
   console.error(err);
 }
-    return  res.send({
+    return res.send({
         "Code" : 2
       })
     })
   },
 
-   create: function (req, res) {
-     Data.create(req.body).exec(function (err, user) {
-       if (err) {
-         return res.json(err.status, {err: err});
-       }
-       if (user) {
-         Mailer.sendWelcomeMail(user);  // <= Here we using
-         res.json(200, {user: user});
-       }
-     });
-   }
+  //  create: function (req, res) {
+  //    Data.create(req.body).exec(function (err, user) {
+  //      if (err) {
+  //        return res.json(err.status, {err: err});
+  //      }
+  //      if (user) {
+  //        Mailer.sendWelcomeMail(user);  // <= Here we using
+  //        res.json(200, {user: user});
+  //      }
+  //    });
+  //  }
 
 
 };

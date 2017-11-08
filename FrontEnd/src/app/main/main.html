@@ -1,3 +1,4 @@
+<!-- Contact and main page links  -->
 <style media="screen">
   body, input[type="text"]{
         font-family: "Open Sans";
@@ -23,6 +24,7 @@
     .dropdown {
         display: inline-block;
     }
+
     #accTitle{
       color: #f4511e;
       text-align: center;
@@ -33,7 +35,7 @@
       color: black;
       text-align: center;
       font-size: 16pt;
-      line-height: 12px;
+
     }
 
     .accButtons{
@@ -47,8 +49,8 @@
       text-decoration: underline;
     }
     button.accordion {
-        background-color: #eee;
-        color: #f4511e;
+        background-color: #f4511e;
+        color: #eee;
         cursor: pointer;
         padding: 18px;
         width: 100%;
@@ -58,7 +60,8 @@
         transition: 0.4s;
     }
     button.accordion.active, button.accordion:hover {
-        background-color: #ccc;
+        background-color: white;
+        color: #f4511e
     }
     div.panel {
         padding: 0 18px;
@@ -74,9 +77,11 @@
 
 <div class="container">
 <center>
-  <a class="navbar-brand" href="#"><img src="assets/images/nationalkidneyredo.png" width="400" height="120"/></a><br>
+  <a class="navbar-brand" href="#"><img src="http://community.azkidney.org/image/NKFAZ_Logo_Orange-and-Black_PNG-file.png" width="400" height="120"/></a><br>
   <div ng-show='!hidemF' class='' id="baseinfo">
-  <br><h1>Basic Information</h1><br>
+  <br><h1>Basic Information</h1>
+  <p>Basic Info we Need to Help you Complete your Forms.</p>
+  <br>
 
       <label for="fname">First Name</label>
       <input type="text" class='form-control' name="fname" ng-model='data.fname' value="" placeholder='First Name'>
@@ -155,8 +160,13 @@
       <button type="button" class='btn btn-info' name="button" ng-click='midShow()' style='float:right'>Next</button><br>
   </div> -->
 <div class="" ng-show='midPage'>
-  <h1>Forms and Checklists</h1>
-  <h2>Forms and Checklists</h2>
+  <div class="">
+
+<h1 id="accTitle">Forms and Checklists</h1>
+<h2 class="accText">This is where you fill out your forms. Now that you have entered some basic information, select which form you wish to fill out.</h2>
+<h2 class="accText"> For your convenience, some fields have been already filled out.</h2>
+</div>
+
   <div class="accButtons">
   <button ng-init='test()' class="accordion">Medical</button>
 <div class="panel">
@@ -166,7 +176,7 @@
 <button class="accordion">Living</button>
 <div class="panel">
   <a ng-click="carShow()" class="accLinks">Car </a>
-  <a ng-click="carShow()" class="accLinks">Dental form</a>
+  <a ng-click="dentalShow()" class="accLinks">Dental form</a>
   <a ng-click="finShow()" class="accLinks">Finances form</a>
   <a ng-click="homeShow()" class="accLinks">Home Income</a>
   <a ng-click="assShow()" class="accLinks">Assets</a>

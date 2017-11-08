@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="">
+    <div class="">
+
+  <h1 id="accTitle">Forms and Checklists</h1>
+  <h2 class="accText">This is where you fill out your forms. Now that you have entered some basic information, select which form you wish to fill out.</h2>
+  <h2 class="accText"> For your convenience, some fields have been already filled out.</h2>
+  </div>
+
+    <div class="accButtons">
+    <button ng-init='test()' class="accordion">Medical</button>
+  <div class="panel">
+      <a ng-click="dentalShow()" class="accLinks">Dental form</a>
+      <a ng-click='renalShow()' class='accLinks'>Renal Registry</a>
+  </div>
+  <button class="accordion">Living</button>
+  <div class="panel">
+    <a ng-click="carShow()" class="accLinks">Car </a>
+    <a ng-click="dentalShow()" class="accLinks">Dental form</a>
+    <a ng-click="finShow()" class="accLinks">Finances form</a>
+    <a ng-click="homeShow()" class="accLinks">Home Income</a>
+    <a ng-click="assShow()" class="accLinks">Assets</a>
+
+
+  </div>
+  <button class="accordion">Financial</button>
+  <div class="panel">
+      <a ng-click="finShow()" class="accLinks">English</a>
+      <a ng-click="homeShow()" class="accLinks">Spanish</a>
+
+
+    </div>
+
+  <button class="accordion">Scholarship</button>
+      <div class="panel">
+        <a ng-click="scholShow()" class="accLinks">Scholarship Application</a>
+      </div>
+    </div>
+    <button type="button" class='btn btn-info' name="button" ng-click='midShow()' style='float:left'>Back</button><br>
+
+  </div>
+</div>

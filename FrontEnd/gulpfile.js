@@ -8,11 +8,20 @@
 
 var fs = require('fs');
 var gulp = require('gulp');
+// var ghPages = require('gulp-gh-pages');
 
 /**
  *  This will load all js or coffee files in the gulp directory
  *  in order to load all gulp tasks
+
  */
+
+ // require('load-grunt-tasks')(grunt);
+
+//  gulp.task('deploy', function() {
+//   return gulp.src('./dist/**/*')
+//     .pipe(ghPages());
+// });
 fs.readdirSync('./gulp').filter(function(file) {
   return (/\.(js|coffee)$/i).test(file);
 }).map(function(file) {

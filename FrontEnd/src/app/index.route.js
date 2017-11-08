@@ -13,7 +13,16 @@
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
         controllerAs: 'main'
+      })
+      .state('mid', {
+        url: '/mid',
+        templateUrl: 'app/mid/mid.html',
+        controller: 'MidController',
+        controllerAs: 'mid'
       });
+
+
+
 
     $urlRouterProvider.otherwise('/');
   }

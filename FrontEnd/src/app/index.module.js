@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('ohax', ['ui.router', 'toastr']);
+    .module('ohax', ['ui.router']);
 
 })();
